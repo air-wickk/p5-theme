@@ -11,19 +11,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 @font-face {
   font-family: "P5";
-  src: url("https://saysora.github.io/p5/p5hatty.ttf");
+  src: url("https://air-wickk.github.io/p5-theme/assets/p5hatty.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "persona";
-  src: url("https://saysora.github.io/p5/PersonifiedUXRegular.ttf");
+  src: url("https://air-wickk.github.io/p5-theme/assets/PersonifiedUXRegular.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "New P5";
-  src: url("https://saysora.github.io/p5/newp5.ttf");
+  src: url("https://air-wickk.github.io/p5-theme/assets/newp5.ttf");
   font-weight: 500;
 }
 
@@ -218,7 +218,7 @@ section[role="navigation"] {
 
 .datePicker-70cO23 .react-datepicker {
   /* background: #000 !important; */
-  background: #000 url(https://saysora.github.io/p5/calendar.jpg) center / cover !important;
+  background: #000 url(https://air-wickk.github.io/p5-theme/assets/calendar.jpg) center / cover !important;
 }
 
 .datePicker-70cO23 .react-datepicker .react-datepicker__header {
@@ -317,7 +317,7 @@ section[role="navigation"] {
 /* Left Column */
 
 div[data-list-item-id="guildsnav___home"] > div {
-  background: #000 url(https://saysora.github.io/p5/p5.png) no-repeat center /
+  background: #000 url(https://air-wickk.github.io/p5-theme/assets/p5.png) no-repeat center /
     75% !important;
 }
 
@@ -682,7 +682,7 @@ div[data-slate-editor=true][data-slate-node=value] {
 
 .newMessagesBar-265mhP {
   border-radius: 2px;
-  background: #101010 url("https://saysora.github.io/p5/notification.gif")
+  background: #101010 url("https://air-wickk.github.io/p5-theme/assets/notification.gif")
     no-repeat;
   background-position-y: 3px;
   background-position-x: 10px;
@@ -832,7 +832,7 @@ section[aria-label="User area"] button[type="button"]:hover {
 
 .userPopout-2j1gM4 .headerNormal-3Zn_yu .banner-1YaD3N {
   background: var(--theme);
-  background: #fff url(https://saysora.github.io/p5/p5star.gif) center center;
+  background: #fff url(https://air-wickk.github.io/p5-theme/assets/p5star.gif) center center;
 }
 
 .userPopout-2j1gM4 .avatarWrapper-eenWra .wrapper-1VLyxH {
