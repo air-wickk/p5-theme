@@ -260,15 +260,15 @@ div[data-list-item-id="guildsnav___home"] svg {
 }
 
 
-.tutorialContainer_dc6fde {
+[class*="tutorialContainer"] {
   color: #fff;
 }
 
-.lowerBadge_669e7 {
+[class*="lowerBadge"] {
   background: var(--theme);
 }
 
-.lowerBadge_669e7 > div {
+[class*="lowerBadge"] > div {
   background: var(--theme) !important;
   color: #fff;
 }
@@ -784,7 +784,8 @@ section[aria-label="User area"] button[type="button"]:hover {
   justify-content: center;
 }
 
-[class*="popout_"] [class*="body_"],`r`n[class*="popout_"] [class*="footer_"] {
+[class*="popout_"] [class*="body_"],
+[class*="popout_"] [class*="footer_"] {
   background: rgb(12, 12, 12);
 }
 
