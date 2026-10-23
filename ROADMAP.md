@@ -1,38 +1,54 @@
 # Persona 5 Theme - Roadmap
 
-Working branch for the 2.0.0 line: `2.0.0-beta` (every phase below merges into it).
-Discipline for each phase: `feature/<phase>-<slug>` branch → commit(s) → merge into `2.0.0-beta` → tag when visually verified.
+Basis for the 2.0.0 line: the `2.0.0-beta` branch now carries the original author's
+2.0.0-beta-2 file as the working base. New phases merge into it.
 
-## Phase 1 - Design foundation (no visual change)
+Discipline for each phase: `feature/<phase>-<slug>` branch -> commit(s) -> merge into
+`2.0.0-beta` -> tag when visually verified.
 
-- Reorganize the CSS into clearly labeled sections
-- Consolidate the palette into `:root` variables (`--p5-white`, `--p5-black`, accent variants)
-- Define reusable patterns once (corner card, skewed button, red-accent highlight) so later phases consume them
-- **Milestone:** structure only, no visual change. Tag `2.0.0-beta-1` on merge.
+## Phase 1 - Author beta as the base (done)
 
-## Phase 2 - Buttons & inputs (2 commits, from the README's "Upcoming Features")
+- Adopted the author's beta file wholesale as `P5.theme.css`
+- All asset URLs remapped to our GitHub Pages hosting (new `p5-main-menu.png`)
+- Meta, site and repo links updated; `-focus-primary` typo and empty rulesets cleaned up
 
-- Commit A: all `[class*="lookFilled"]` button variants (primary/green/danger/brand) - black card + 2px white border + alternating rotate/skew treatment
-- Commit B: text inputs & sliders (settings fields, titlebar inputs, volume slider) - consistent focus states. Tag `2.0.0-beta-2`.
+## Phase 2 - Buttons & inputs
 
-## Phase 3 - Context menus & tooltips (1 commit)
+- Commit A: bring her dead button rules to life: `lookFilled` primary (red fill,
+  invert hover), `colorGreen`, header toolbar hover, plus black-card treatment for the
+  voice strip buttons (camera / screen share / activity / soundboard)
+- Commit B: text inputs and sliders (replace dead `.slider-1PF9SW` rules with live
+  `[class*="slider"]` variants), consistent focus states
+- **Milestone:** tag `2.0.0-beta-2` when visually verified
 
-- Right-click menus, sub-menus, checkbox/radio rows, hover tooltips
-- Black card treatment + P5 hover styling (currently all inherit Discord defaults)
+## Phase 3 - Search, menus & overlays
 
-## Phase 4 - Modals & settings (2 commits)
+- Port the dead search and filter block (`searchBar`, `queryContainer`, `resultsGroup`,
+  search chips, hint values) to live classes, keeping her visuals
+- Port the date picker wrappers and context menu rules to live classes
+- Cover tooltips and keyboard shortcut cards if the hover styles need siblings
 
-- Commit A: settings navigation + general modal - black background, page navigation, radio/checkbox/toggle rows
-- Commit B: dedicated assets - nickname popup, reconnecting screen, welcome banner
+## Phase 4 - Guild rail & channel tree leftovers
 
-## Phase 5 - Chat enhancements (2 commits)
+- Live ports for the remaining guild rail rules (`tutorialContainer`, `lowerBadge`,
+  folder wrappers) and the channel tree block so they stop relying on matches that no
+  longer render
 
-- Commit A: reactions bar, emoji picker, attachment/download cards
-- Commit B: threads, forum channels, voice channel tiles (the `itemCard` remap is best-effort until now)
+## Phase 5 - Chat, friends & voice cards
 
-## Phase 6 - Profile popouts (1 commit, replaces the guessed `popout_` remap)
+- Message area, friends list, voice and activity card sections: port their dead
+  hashed classes to live ones (the 1.11.1 tag work documented most of these mappings)
 
-- Requirements check first: inspect the actual user popout DOM structure in the Discord client, then style banner/avatar/name/body sections precisely
+## Phase 6 - Popouts & modals
+
+- User popout, nickname popup, notification settings, upload modal, everyone popup:
+  port or consciously retire each dead block after checking against the live DOM
+
+## Phase 7 - New polish on a stable base
+
+- Decide the author token system questions she left open (accent candidates,
+  `--p5-main-font` usage) and new drop-in effects once everything dead is either
+  ported or removed
 
 ## Ongoing housekeeping (any time)
 
