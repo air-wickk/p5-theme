@@ -146,7 +146,7 @@
 
   /* Inner sidebar */
 
-  .pill_e5445c .item__58105 {
+  .wrapper__58105 .item__58105 {
     background-color: var(--p5-lightest);
   }
 
@@ -329,16 +329,21 @@ section[aria-label="Channel header"]>div>div:last-child div[role="button"]:not([
   color: var(--theme);
 }
 
-/* Search icon card (channel header) */
+/* Channel search bar card (channel header) */
 
-section[aria-label="Channel header"] div[role="button"][class*="iconLayout_"] {
+section[aria-label="Channel header"] .searchBar_c322aa {
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  color: #fff;
+}
+
+section[aria-label="Channel header"] .searchBar_c322aa div[role="button"][class*="iconLayout_"] {
   position: relative;
   width: 26px;
   height: 26px;
   padding: 0;
   box-sizing: border-box;
-  background: #000;
-  border: 2px solid #fff;
   border-radius: 2px;
 }
 
@@ -563,50 +568,29 @@ section[role="navigation"] {
   font-weight: 700 !important;
 }
 
-/* Left Column */
+/* Left Column (guild rail ports) */
 
-div[data-list-item-id="guildsnav___home"]>div {
-  background: #000 url(https://air-wickk.github.io/p5-theme/assets/p5.png) no-repeat center / 75% !important;
+div[data-list-item-id="guildsnav___home"] .childWrapper__6e9f8 {
+  background: transparent url(https://air-wickk.github.io/p5-theme/assets/p5.png) no-repeat center / 75% !important;
 }
 
-div[data-list-item-id="guildsnav___home"] svg {
+div[data-list-item-id="guildsnav___home"] img {
   display: none;
 }
 
-
-.tutorialContainer_dc6fde {
+[class*="upperBadge_"] [class*="iconBadge_"] {
+  background-color: var(--theme);
   color: #fff;
 }
 
-.lowerBadge_669e7 {
-  background: var(--theme);
-}
-
-.lowerBadge_669e7>div {
-  background: var(--theme) !important;
-  color: #fff;
-}
-
-.guilds-2JjMmN .folderIconWrapper-226oVY {
-  background: rgba(10, 10, 10, 0.5) !important;
-}
-
-.tutorialContainer_dc6fde svg div,
-.listItem_fa7b36 svg div {
-  background: #fff;
-  color: var(--hp-green);
-}
-
-.tutorialContainer_dc6fde svg:hover div,
-.listItem_fa7b36 svg:hover div {
-  background: var(--mp-pink);
-  color: #fff;
-}
-
-.bar-30k2ka {
+[class*="unreadBar_"] {
   background: #000;
   border-radius: 2px;
-  box-shadow: 0 0 0 2px #fff, -2px -1px 0 2px #fff;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+[class*="unreadBar_"] [class*="text_"] {
+  color: #fff;
 }
 
 /* Popout Above Guilds */
@@ -712,12 +696,8 @@ div[data-list-id="people-list"] div[role="listitem"] div[role="button"]:nth-chil
 
 /* Main Message Area */
 
-.chat-2ZfjoI {
+.chatContent_f75fb0 {
   background: var(--p5-darkest);
-}
-
-.chat-2ZfjoI .title-3qD0b- {
-  background: var(--primary-alt);
 }
 
 .emptyChannelIcon__1a1ba {
@@ -818,16 +798,16 @@ ol[data-list-id="chat-messages"] div[role="separator"]:nth-child(2n + 1) span {
 
 /* .buttons-uaqb-5 */
 
-.channelTextArea__648e5>div {
+.channelTextArea__74017>div {
   border-radius: 0;
   transform: skewX(-4deg);
 }
 
-.channelTextArea__648e5>div .inner__9fd0b {
+.channelTextArea__74017>div .inner__74017 {
   transform: skewX(4deg);
 }
 
-.channelTextArea__648e5 {
+.channelTextArea__74017 {
   font-size: 0.95em;
   font-family: var(--p5-main-font);
 }
@@ -837,20 +817,20 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 
-.channelTextArea__648e5 button:hover svg path {
+.channelTextArea__74017 button:hover svg path {
   fill: var(--theme);
 }
 
-.channelTextArea__648e5 .slateTextArea_b19976 {
+.channelTextArea__74017 .slateTextArea_ec4baf {
   caret-color: var(--theme);
 }
 
-.channelTextArea__648e5 [data-slate-node=element]>[data-slate-node=element] {
+.channelTextArea__74017 [data-slate-node=element]>[data-slate-node=element] {
   color: #fff;
   background: var(--mp-pink);
 }
 
-.channelTextArea__648e5 .inlineCode__0cacf span {
+.channelTextArea__74017 .inlineCode__0cacf span {
   color: #fff;
 }
 
@@ -859,23 +839,23 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 /* / Command Area */
-.channelTextArea__648e5 .autocomplete-3NRXG8 {
+.channelTextArea__74017 .autocomplete-3NRXG8 {
   transform: skewX(-2deg);
 }
 
-.channelTextArea__648e5 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl {
+.channelTextArea__74017 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl {
   background: var(--background-secondary);
 }
 
-.channelTextArea__648e5 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl .categorySection-3hl0bM .wrapper-1NNaWG {
+.channelTextArea__74017 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl .categorySection-3hl0bM .wrapper-1NNaWG {
   background: none;
 }
 
-.channelTextArea__648e5 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl .infoWrapper-33i2RS .colorInteractiveActive-30E9n8 {
+.channelTextArea__74017 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl .infoWrapper-33i2RS .colorInteractiveActive-30E9n8 {
   color: #fff;
 }
 
-.channelTextArea__648e5 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl .selected-3H3-RC {
+.channelTextArea__74017 .autocomplete-3NRXG8 .autocompleteInner-y1mjDl .selected-3H3-RC {
   background: var(--theme) !important;
 }
 
@@ -903,6 +883,10 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 /* Channel Column & Below */
+#channels {
+  background-color: #000;
+}
+
 #channels ul li div[role="img"],
 #channels ul li div>svg[role="img"]:not([width="18"]) {
   background: #000;
@@ -954,20 +938,28 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 /* User panel */
-section[aria-label="User area"] button[type="button"] {
-  transform: rotate(2deg);
+
+[class*="buttons__37e49"] button[class*="button__201d5"] {
+  background-color: #000;
   color: #fff;
+  transform: rotate(2deg);
   border: 2px solid #fff;
   border-radius: 2px;
 }
 
-section[aria-label="User area"] button[type="button"]:nth-child(even) {
+[class*="buttons__37e49"] button[class*="button__201d5"]:nth-child(even) {
   transform: rotate(-4deg);
 }
 
-section[aria-label="User area"] button[type="button"]:hover {
-  background: #fff;
-  color: var(--theme);
+[class*="buttons__37e49"] button[class*="button__201d5"] svg path,
+[class*="buttons__37e49"] button[class*="button__201d5"] svg circle {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+[class*="buttons__37e49"] button[class*="button__201d5"]:hover {
+  background-color: #fff !important;
+  color: var(--theme) !important;
 }
 
 /* For funs */
