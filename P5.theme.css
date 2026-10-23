@@ -1,13 +1,14 @@
-﻿/**
+/**
     * @name Persona 5
-    * @version 1.11.0
+    * @version 2.0.0-beta.1
     * @description Persona 5 Color Scheme for Better Discord
     * @author saysora
-    * @website https://github.com/saysora
-    * @source https://github.com/saysora/p5
+    * @maintained by air-wickk
+    * @website https://air-wickk.github.io/p5-theme/
+    * @source https://github.com/air-wickk/p5-theme
 */
 
-/* Import Varela Font */
+/* -- Fonts ----------------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 @font-face {
   font-family: "P5";
@@ -30,11 +31,22 @@
 :root {
   --theme: var(--p5-primary);
 
-  /* New Main Color */
+  /* Palette: aces & accents */
   --p5-primary: #cc0001;
   --hp-green: #00ddb2;
   --mp-pink: #ff66ed;
   --p5-blue: #40c1fb;
+
+  /* Monochrome scale */
+  --p5-white: #fff;
+  --p5-black: #000;
+  --p5-carbon: #101010;   /* shared card background */
+  --p5-panel: rgb(12, 12, 12);      /* popouts & search panels */
+
+  /* Overlay shades */
+  --p5-dim: rgba(10, 10, 10, 0.5);
+  --p5-dim-heavy: rgba(10, 10, 10, 0.8);
+  --p5-divider: #333;
 
   /* Standard Variables */
 
@@ -42,14 +54,14 @@
   --primary-alt: #111;
 
   /* Backgrounds */
-  --background-primary: #101010;
+  --background-primary: var(--p5-carbon);
   --background-secondary: var(--primary-alt);
   --background-secondary-alt: var(--primary-alt);
   --background-accent: var(--theme);
   --background-tertiary: var(--theme);
 
   /* Channel Text Area */
-  --channeltextarea-background: #fff;
+  --channeltextarea-background: var(--p5-white);
 
   /* Scrollbar */
   --scrollbar-thin-thumb: var(--theme);
@@ -57,25 +69,34 @@
   --scrollbar-auto-track: #222;
 
   /* Header */
-  --header-primary: #fff !important;
-
-  /* 9A0002 */
+  --header-primary: var(--p5-white) !important;
 
   /* Text */
   --text-link: var(--theme);
-  --text-muted: #fff;
+  --text-muted: var(--p5-white);
   /* --text-muted: #cc0001; */
 
   /* Focus */
-  --focus-primary: #fff;
+  --focus-primary: var(--p5-white);
 }
 
-/* Top Area */
+/* ==========================================================================
+   PATTERN RECIPES - single source of truth for later phases
+   --------------------------------------------------------------------------
+   p5-card:      background var(--p5-black); border: 2px solid var(--p5-white);
+                 border-radius: 2px;
+   p5-tilt:      transform: rotate(4deg); even-indexed siblings rotate(-4deg);
+   p5-skew:      transform: skewX(-4deg); with an inner counter-skewX(4deg)
+                 so content stays level;
+   p5-highlight: background var(--p5-white); color: var(--p5-primary);
+   ========================================================================== */
+
+/* -- Channel header buttons ------------------------------------------------ */
 
 section[aria-label="Channel header"] > div > div:last-child div[role="button"] {
-  background: #000;
+  background: var(--p5-black);
   border-radius: 2px;
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
   margin: 0 2px;
   transform: rotate(4deg);
 }
@@ -89,7 +110,7 @@ section[aria-label="Channel header"] > div > div:last-child div[role="button"] s
   box-sizing: border-box;
   width: 20px;
   height: auto;
-  color: #fff;
+  color: var(--p5-white);
 }
 
 section[aria-label="Channel header"] > div > div:last-child div[role="button"][aria-expanded="true"] {
@@ -97,44 +118,47 @@ section[aria-label="Channel header"] > div > div:last-child div[role="button"][a
 }
 
 section[aria-label="Channel header"] > div > div:last-child div[role="button"][aria-expanded="true"]:nth-child(2n + 3) {
-  background: #fff;
+  background: var(--p5-white);
 }
 
 section[aria-label="Channel header"] > div > div:last-child div[role="button"][aria-expanded="true"]:nth-child(2n + 3) svg {
   color: var(--theme);
 }
 
-/* Dunno what I'm doing with these atm */
+/* -- Header toolbar hover --------------------------------------------------- */
+
 [class*="toolbar_"] [class*="clickable_"]:hover {
-  background: #fff;
+  background: var(--p5-white);
 }
 
 [class*="toolbar_"] [class*="clickable_"]:hover [class*="icon_"] {
   color: var(--theme);
 }
 
+/* -- Global buttons ---------------------------------------------------------- */
+
 .theme-dark [class*="lookFilled"][class*="colorPrimary"] {
   border-radius: 2px;
   background-color: var(--theme);
-  color: #fff;
+  color: var(--p5-white);
 }
 
 .theme-dark [class*="lookFilled"][class*="colorPrimary"]:hover {
-  background: #fff;
+  background: var(--p5-white);
   color: var(--theme);
 }
 
-section[role="navigation"] {
-  background: var(--primary-dark) !important;
+[class*="lookFilled"][class*="colorGreen"] {
+  background: var(--hp-green);
 }
 
-/* Search & Filter */
+/* -- Search & filter -------------------------------------------------------- */
 
 [class*="searchBar"] {
-  background: rgb(12, 12, 12);
-  box-shadow: 0 0 0 2px #fff;
+  background: var(--p5-panel);
+  box-shadow: 0 0 0 2px var(--p5-white);
   border-radius: 2px;
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="searchBar"] div[role="button"] {
@@ -142,57 +166,78 @@ section[role="navigation"] {
 }
 
 [class*="search-results"] {
-  background: #000;
-  color: #fff;
+  background: var(--p5-black);
+  color: var(--p5-white);
 }
 
 [class*="search-results"][class*="focused"] {
-  background: rgb(12, 12, 12);
+  background: var(--p5-panel);
 }
 
 [class*="search-results"] [class*="queryText"] strong {
-  background: #fff;
+  background: var(--p5-white);
   color: var(--mp-pink);
   padding: 5px;
 }
 
 [class*="keybindShortcut"] span {
   background: var(--theme);
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="keybindShortcut"]:active span {
-  background: #fff;
+  background: var(--p5-white);
   color: var(--theme);
 }
 
 [class*="search-results"] [class*="option"] {
   border-radius: 2px;
-  border: 2px solid #fff;
-  background: #000;
+  border: 2px solid var(--p5-white);
+  background: var(--p5-black);
 }
 
 [class*="search-results"] [class*="option"]::after {
-  background: linear-gradient(to left, #000 80%, transparent);
+  background: linear-gradient(to left, var(--p5-black) 80%, transparent);
 }
 
 [class*="search-results"] [class*="option"] [class*="plusIcon"] {
   color: var(--mp-pink);
 }
 
-/* Date */
+/* -- Search chips ------------------------------------------------------------ */
+
+[class*="searchFilter"] span {
+  color: var(--p5-white);
+  background: var(--mp-pink);
+  padding: 0 2px;
+  font-weight: 700;
+}
+
+[class*="searchAnswer"] span {
+  color: var(--p5-white);
+  background: var(--hp-green);
+  padding: 0 2px;
+  font-weight: 700;
+}
+
+[class*="hintValue"] {
+  background: var(--hp-green) !important;
+  color: var(--p5-white);
+  font-weight: 700 !important;
+}
+
+/* -- Date picker & calendar -------------------------------------------------- */
 
 [class*="datePicker"] {
-  background: #000 !important;
+  background: var(--p5-black) !important;
 }
 
 [class*="calendarPicker"] {
-  background: #000 !important;
+  background: var(--p5-black) !important;
 }
 
 .react-datepicker {
-  /* background: #000 !important; */
-  background: #000 url(https://air-wickk.github.io/p5-theme/assets/calendar.jpg) center / cover !important;
+  background: var(--p5-black) url(https://air-wickk.github.io/p5-theme/assets/calendar.jpg) center / cover !important;
 }
 
 .react-datepicker .react-datepicker__header {
@@ -201,23 +246,23 @@ section[role="navigation"] {
 }
 
 .react-datepicker .react-datepicker__header .react-datepicker__day-name {
-  background: #000;
+  background: var(--p5-black);
   padding: 5px 0;
-  color: #fff;
+  color: var(--p5-white);
   font-weight: 600;
 }
 
 .react-datepicker .react-datepicker__month .react-datepicker__day {
-  background: #000;
+  background: var(--p5-black);
 }
 
 .react-datepicker .react-datepicker__month .react-datepicker__day:hover {
   background: var(--theme);
-  color: #fff;
+  color: var(--p5-white);
 }
 
 .react-datepicker .react-datepicker__month .react-datepicker__day.react-datepicker__day--selected {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 .react-datepicker .react-datepicker__month .react-datepicker__day.react-datepicker__day--selected:hover {
@@ -228,30 +273,14 @@ section[role="navigation"] {
   background: var(--p5-blue);
 }
 
-[class*="searchFilter"] span {
-  color: #fff;
-  background: var(--mp-pink);
-  padding: 0 2px;
-  font-weight: 700;
-}
+/* -- Guild rail & left column ------------------------------------------------ */
 
-[class*="searchAnswer"] span {
-  color: #fff;
-  background: var(--hp-green);
-  padding: 0 2px;
-  font-weight: 700;
+section[role="navigation"] {
+  background: var(--primary-dark) !important;
 }
-
-[class*="hintValue"] {
-  background: var(--hp-green) !important;
-  color: #fff;
-  font-weight: 700 !important;
-}
-
-/* Left Column */
 
 div[data-list-item-id="guildsnav___home"] > div {
-  background: #000 url(https://air-wickk.github.io/p5-theme/assets/p5.png) no-repeat center /
+  background: var(--p5-black) url(https://air-wickk.github.io/p5-theme/assets/p5.png) no-repeat center /
     75% !important;
 }
 
@@ -261,7 +290,7 @@ div[data-list-item-id="guildsnav___home"] svg {
 
 
 [class*="tutorialContainer"] {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="lowerBadge"] {
@@ -270,33 +299,33 @@ div[data-list-item-id="guildsnav___home"] svg {
 
 [class*="lowerBadge"] > div {
   background: var(--theme) !important;
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="guilds"] [class*="folderIconWrapper"] {
-  background: rgba(10, 10, 10, 0.5) !important;
+  background: var(--p5-dim) !important;
 }
 
 [class*="tutorialContainer"] svg div, [class*="listItem"] svg div {
-  background: #fff;
+  background: var(--p5-white);
   color: var(--hp-green);
 }
 
 [class*="tutorialContainer"] svg:hover div, [class*="listItem"] svg:hover div {
   background: var(--mp-pink);
-  color: #fff;
+  color: var(--p5-white);
 }
 
-/* Popout Above Guilds */
+/* -- Context menus ---------------------------------------------------------------- */
 
 [class*="menu"] [class*="scroller"] {
-  background: #000;
+  background: var(--p5-black);
   border-radius: 2px;
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
 }
 
 [class*="menu"] [class*="scroller"] [class*="item_"] {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="menu"] [class*="scroller"] [class*="item_"][class*="focused"] {
@@ -311,7 +340,7 @@ div[data-list-item-id="guildsnav___home"] svg {
   color: var(--theme) !important;
 }
 
-/* Friends Page Main Area */
+/* -- Friends list ---------------------------------------------------------------- */
 
 [class*="container"][class*="themed"] {
   background: var(--background-secondary);
@@ -323,22 +352,22 @@ div[data-list-item-id="guildsnav___home"] svg {
 }
 
 [class*="interactive"]:hover {
-  background: rgba(10,10,10,0.5);
+  background: var(--p5-dim);
 }
 
 [class*="interactive"][class*="selected"] {
-  background: rgba(10,10,10,0.5);
+  background: var(--p5-dim);
 }
 
 [class*="peopleColumn"] {
-  background: rgba(10, 10, 10, 0.8);
+  background: var(--p5-dim-heavy);
 }
 
 nav[aria-label="Private channels"] ul[role="list"] li[role="listitem"] div[role="img"],
 div[data-list-id="people-list"] div[role="listitem"] div[role="img"] {
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
   border-radius: 2px;
-  background: #000;
+  background: var(--p5-black);
 }
 
 nav[aria-label="Private channels"] ul[role="list"] li[role="listitem"] div[role="img"] {
@@ -357,29 +386,29 @@ div[data-list-id="people-list"] div[role="listitem"] div[role="img"] svg foreign
 
 div[data-list-id="people-list"] div[role="listitem"] div[role="button"] {
   border-radius: 2px;
-  background: #000;
-  border: 2px solid #fff;
+  background: var(--p5-black);
+  border: 2px solid var(--p5-white);
   transform: rotate(-4deg);
-  color: #fff;
+  color: var(--p5-white);
 }
 
 div[data-list-id="people-list"] div[role="listitem"] {
-  background: rgba(10,10,10,0.8);
+  background: var(--p5-dim-heavy);
 }
 
 div[data-list-id="people-list"] div[role="listitem"] div[role="button"]:nth-child(even) {
   color: var(--theme);
 }
 
-/* Now Playing maybe someday I'll return to this */
+/* -- Voice & activity cards ------------------------------------------------------- */
 
 [class*="nowPlayingColumn"] {
-  background: #000;
+  background: var(--p5-black);
 }
 
 [class*="itemCard"] {
   background: var(--primary-alt);
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
   border-radius: 2px;
   transform: skew(-3deg);
 }
@@ -389,10 +418,10 @@ div[data-list-id="people-list"] div[role="listitem"] div[role="button"]:nth-chil
 }
 
 [class*="itemCard"] [class*="section"] {
-  background: #101010;
+  background: var(--p5-carbon);
 }
 
-/* Main Message Area */
+/* -- Chat area -------------------------------------------------------------------- */
 
 [class*="chat_"] {
   background: var(--primary-dark);
@@ -404,21 +433,21 @@ div[data-list-id="people-list"] div[role="listitem"] div[role="button"]:nth-chil
 
 [class*="emptyChannelIcon"] {
   border-radius: 0;
-  background-color: #000;
+  background-color: var(--p5-black);
   border-radius: 2px;
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
   transform: rotate(-4deg);
 }
 
 [class*="emptyChannelIcon"] svg {
-  color: #000 !important;
+  color: var(--p5-black) !important;
 }
 
-/* Messages */
+/* -- Messages ------------------------------------------------------------------ */
 
 ol[data-list-id="chat-messages"] div[role="article"] > div > img {
   border-radius: 0;
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
   transform: rotate(-4deg) skew(3deg);
   overflow: visible;
 }
@@ -436,7 +465,7 @@ ol[data-list-id="chat-messages"] div[role="article"] h3 {
   color: var(--theme);
 }
 
-/* Message Hover Buttons */
+/* -- Message hover buttons ------------------------------------------------------ */
 
 ol[data-list-id="chat-messages"] div[role="article"] div[aria-label="Message Actions"] > div {
   border-radius: 0;
@@ -445,9 +474,9 @@ ol[data-list-id="chat-messages"] div[role="article"] div[aria-label="Message Act
 
 ol[data-list-id="chat-messages"] div[role="article"] div[aria-label="Message Actions"] div[role="button"] {
   border-radius: 2px;
-  background: #000;
-  color: #fff;
-  border: 2px solid #fff;
+  background: var(--p5-black);
+  color: var(--p5-white);
+  border: 2px solid var(--p5-white);
   transform: rotate(4deg);
   padding: 1px;
 }
@@ -469,25 +498,20 @@ ol[data-list-id="chat-messages"] [class*="disableInteraction"] {
   background: var(--primary-dark);
 }
 
-[class*="lookFilled"][class*="colorGreen"] {
-  background: var(--hp-green);
-}
-
-/* Date dividers */
+/* -- Date dividers ----------------------------------------------------------- */
 
 ol[data-list-id="chat-messages"] div[role="separator"]:has(span) {
-  /* border-color: rgba(255, 255, 255, 0.7); */
-  border-color: #333;
+  border-color: var(--p5-divider);
 }
 
 ol[data-list-id="chat-messages"] div[role="separator"] span {
   font-family: "New P5";
   font-size: 0.75em;
-  color: #000;
-  background: #fff;
+  color: var(--p5-black);
+  background: var(--p5-white);
   letter-spacing: 3px;
   border-radius: 2px;
-  border: 2px solid #000;
+  border: 2px solid var(--p5-black);
   padding: 5px;
   transform: skew(6deg);
 }
@@ -498,17 +522,14 @@ ol[data-list-id="chat-messages"] div[role="separator"]:nth-child(2n + 1) span {
 
 ol[data-list-id="chat-messages"] div[role="article"] > div > div span[role="button"]:has(:not(img)) {
   background: var(--p5-primary);
-  color: #fff !important;
+  color: var(--p5-white) !important;
 }
 
 ol[data-list-id="chat-messages"] div[role="article"] > div > div span[role="button"]:has(:not(img)):hover {
   background: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* User Message Area */
-
-/* REVISIT LATER */
-
+/* -- Message input ------------------------------------------------------------ */
 
 [class*="channelTextArea"] > div {
   border-radius: 0;
@@ -521,12 +542,11 @@ ol[data-list-id="chat-messages"] div[role="article"] > div > div span[role="butt
 
 [class*="channelTextArea"] {
   font-size: 0.95em;
-  /* font-family: "New P5"; */
   font-family: "Varela Round", sans-serif;
 }
 
 div[data-slate-editor=true][data-slate-node=value] {
-  color: #000;
+  color: var(--p5-black);
 }
 
 
@@ -539,19 +559,19 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 [class*="channelTextArea"]  [data-slate-node=element] > [data-slate-node=element] {
-  color: #fff;
+  color: var(--p5-white);
   background: var(--mp-pink);
 }
 
 [class*="channelTextArea"]  [class*="inlineCode"] span {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="codeLine"] {
-  color: #000;
+  color: var(--p5-black);
 }
 
-/* / Command Area */
+/* -- Autocomplete & command palette ------------------------------------------ */
 [class*="channelTextArea"] [class*="autocomplete"] {
   transform: skewX(-2deg);
 }
@@ -573,7 +593,7 @@ div[data-slate-editor=true][data-slate-node=value] {
   [class*="autocomplete"] [class*="inner"]
   [class*="infoWrapper"]
   [class*="colorInteractiveActive"] {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="channelTextArea"]
@@ -588,17 +608,17 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 .theme-dark [class*="newMessagesBar"] [class*="pill"] span {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="newMessagesBar"] {
   border-radius: 2px;
-  background: #101010 url("https://air-wickk.github.io/p5-theme/assets/notification.gif")
+  background: var(--p5-carbon) url("https://air-wickk.github.io/p5-theme/assets/notification.gif")
     no-repeat;
   background-position-y: 3px;
   background-position-x: 10px;
   background-size: 20px;
-  box-shadow: 0 0 0 2px #fff;
+  box-shadow: 0 0 0 2px var(--p5-white);
   top: 2px;
   flex-direction: column;
   display: inline-flex;
@@ -607,17 +627,17 @@ div[data-slate-editor=true][data-slate-node=value] {
   right: 0;
 }
 
-/* Mention override cause it's too hard to read as is */
+/* -- Mentions ------------------------------------------------------------------ */
 
 [class*="slateTextArea"] .mention {
   background: var(--mp-pink) !important;
-  color: #fff;
+  color: var(--p5-white);
 }
 
-/* Channel Column & Below */
+/* -- Channel list (sidebar tree) ------------------------------------------------ */
 
 [class*="flowerStarContainer"] [class*="childContainer"] svg path {
-  fill: #fff;
+  fill: var(--p5-white);
 }
 
 [class*="tree_"] ul li {
@@ -626,15 +646,14 @@ div[data-slate-editor=true][data-slate-node=value] {
 
 [class*="tree_"] ul li div[role="img"],
 [class*="tree_"] ul li div > svg[role="img"]:not([width="18"]) {
-  background: #000;
+  background: var(--p5-black);
   border-radius: 2px;
-  /* border: 1px solid #fff; */
-  box-shadow: 0 0 0 2px #fff;
+  box-shadow: 0 0 0 2px var(--p5-white);
   transform: skewX(4deg);
 }
 
 [class*="tree_"] ul li div svg[role="img"]:not([width="18"]) {
-  color: #fff !important;
+  color: var(--p5-white) !important;
 }
 
 [class*="tree_"] ul li:nth-child(even) div[role="img"],
@@ -643,7 +662,7 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 [class*="tree_"] ul li div[role="img"] svg {
-  color: #fff !important;
+  color: var(--p5-white) !important;
 }
 
 [class*="tree_"] ul li:nth-child(2n + 3) div[role="img"] svg {
@@ -655,15 +674,15 @@ div[data-slate-editor=true][data-slate-node=value] {
 }
 
 [class*="tree_"] ul li:nth-child(2n + 1):hover div[role="img"] svg {
-  background: #fff !important;
+  background: var(--p5-white) !important;
   color: var(--theme) !important;
 }
 
-/* User panel */
+/* -- User panel -------------------------------------------------------------------- */
 section[aria-label="User area"] button[type="button"] {
   transform: rotate(2deg);
-  color: #fff;
-  border: 2px solid #fff;
+  color: var(--p5-white);
+  border: 2px solid var(--p5-white);
   border-radius: 2px;
 }
 
@@ -672,23 +691,21 @@ section[aria-label="User area"] button[type="button"]:nth-child(even) {
 }
 
 section[aria-label="User area"] button[type="button"]:hover {
-  background: #fff;
+  background: var(--p5-white);
   color: var(--theme);
 }
 
-/* For funs */
-
-/* Activity Panel */
+/* -- Activity panel ------------------------------------------------------------ */
 
 [class*="activityPanel"] [class*="body_"] {
   position: relative;
   background: var(--theme);
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
   transform: skewY(2deg);
 }
 
 [class*="activityPanel"] [class*="body_"] svg {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="activityPanel"] [class*="body_"]::after {
@@ -698,18 +715,18 @@ section[aria-label="User area"] button[type="button"]:hover {
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 10px solid #fff;
+  border-top: 10px solid var(--p5-white);
   left: 90%;
   top: 100%;
 }
 
-/* Right Members Area */
+/* -- Members list --------------------------------------------------------------- */
 
 [class*="membersWrap"] [class*="name"] {
   font-weight: 600;
 }
 
-/* User Popup */
+/* -- User popout (hover card) ---------------------------------------------------- */
 
 [class*="popout_"] {
   font-weight: 700;
@@ -717,7 +734,7 @@ section[aria-label="User area"] button[type="button"]:hover {
 
 [class*="popout_"] [class*="banner"] {
   background: var(--theme);
-  background: #fff url(https://air-wickk.github.io/p5-theme/assets/p5star.gif) center center;
+  background: var(--p5-white) url(https://air-wickk.github.io/p5-theme/assets/p5star.gif) center center;
 }
 
 [class*="popout_"] [class*="avatarWrapper"] [class*="wrapper"] {
@@ -742,9 +759,9 @@ section[aria-label="User area"] button[type="button"]:hover {
 }
 
 [class*="popout_"] [class*="headerText"] {
-  background: #fff;
+  background: var(--p5-white);
   border-radius: 2px;
-  border: 2px solid #000;
+  border: 2px solid var(--p5-black);
   padding: 2px;
   transform: skewY(3deg);
   color: var(--theme);
@@ -759,15 +776,15 @@ section[aria-label="User area"] button[type="button"]:hover {
 }
 
 [class*="popout_"] [class*="headerText"] [class*="username"] + span {
-  color: #000;
+  color: var(--p5-black);
 }
 [class*="popout_"] [class*="customStatus"] {
   display: inline-block;
-  color: #fff;
+  color: var(--p5-white);
   background: var(--theme);
   padding: 2px 5px;
   border-radius: 2px;
-  border: 2px solid #000;
+  border: 2px solid var(--p5-black);
   transform: skewY(2.5deg);
 }
 
@@ -776,9 +793,9 @@ section[aria-label="User area"] button[type="button"]:hover {
 }
 
 [class*="popout_"] [class*="activitySection"] [class*="headerText"] {
-  background: #fff;
+  background: var(--p5-white);
   border-radius: 2px;
-  border: 2px solid #000;
+  border: 2px solid var(--p5-black);
   color: var(--theme);
   display: flex;
   justify-content: center;
@@ -786,7 +803,7 @@ section[aria-label="User area"] button[type="button"]:hover {
 
 [class*="popout_"] [class*="body_"],
 [class*="popout_"] [class*="footer_"] {
-  background: rgb(12, 12, 12);
+  background: var(--p5-panel);
 }
 
 [class*="popout_"] [class*="textarea"],
@@ -797,20 +814,19 @@ section[aria-label="User area"] button[type="button"]:hover {
 
 [class*="popout_"] [class*="textarea"]:focus,
 [class*="popout_"] [class*="footer_"] [class*="inputWrapper"] input:focus {
-  background: #000;
-  border-color: #fff;
+  background: var(--p5-black);
+  border-color: var(--p5-white);
 }
 
-/* Big Profile */
+/* -- Modals: nickname popup & notification settings ------------------------------ */
 
-/* Nickname Popup */
 [class*="focusLock"] [class*="root"] {
   border-radius: 2px;
-  border: 2px solid #fff;
+  border: 2px solid var(--p5-white);
 }
 
 [class*="focusLock"] [class*="modal"] {
-  background: #000;
+  background: var(--p5-black);
 }
 
 [class*="focusLock"],
@@ -819,24 +835,24 @@ section[aria-label="User area"] button[type="button"]:hover {
 }
 
 [class*="focusLock"] form {
-  background: #000;
+  background: var(--p5-black);
 }
 
 [class*="focusLock"] form [class*="title"] {
   display: inline-flex;
-  background: #fff;
+  background: var(--p5-white);
   padding: 5px 10px;
   border-radius: 2px;
   border: 2px solid var(--theme);
-  color: #000;
+  color: var(--p5-black);
   flex: 0 0 auto;
   margin: 5px auto;
   transform: skewX(4deg);
 }
 
 [class*="focusLock"] form [class*="input"] {
-  background: #fff;
-  color: #000;
+  background: var(--p5-white);
+  color: var(--p5-black);
   border-radius: 2px;
 }
 
@@ -854,12 +870,12 @@ section[aria-label="User area"] button[type="button"]:hover {
 
 [class*="focusLock"] [class*="item"],
 [class*="focusLock"] [class*="item"] [class*="info"] {
-  background: #000;
+  background: var(--p5-black);
 }
 
 [class*="focusLock"] [class*="item"]:hover,
 [class*="focusLock"] [class*="item"]:hover [class*="info"] {
-  background: rgba(10, 10, 10, 0.8);
+  background: var(--p5-dim-heavy);
 }
 
 [class*="focusLock"] [class*="item"] [class*="radioBar"] > svg path,
@@ -868,37 +884,35 @@ section[aria-label="User area"] button[type="button"]:hover {
 }
 
 [class*="focusLock"] [class*="flex"] {
-  background: #000;
+  background: var(--p5-black);
 }
 
 [class*="focusLock"] [class*="flex"] [class*="button"] {
-  background: #000;
-  border: 2px solid #fff;
+  background: var(--p5-black);
+  border: 2px solid var(--p5-white);
   border-radius: 2px;
   margin: 0 5px;
   transform: skewX(-2deg);
 }
 
 [class*="focusLock"] [class*="flex"] [class*="colorBrand"] {
-  background: #fff;
+  background: var(--p5-white);
   color: var(--theme);
 }
 
 [class*="focusLock"] [class*="flex"] [class*="colorBrand"]:hover {
   background: var(--theme);
-  color: #fff;
+  color: var(--p5-white);
 }
-
-/* Notification Settings */
 
 [class*="focusLock"] [class*="content"] {
-  background: #000;
+  background: var(--p5-black);
 }
 
-/* Voice */
+/* -- Voice & call toolbar ----------------------------------------------------- */
 
 [class*="slider"] [class*="bar"] {
-  background: #fff;
+  background: var(--p5-white);
 }
 
 [class*="slider"] [class*="barFill"] {
@@ -910,9 +924,9 @@ section[aria-label="User area"] button[type="button"]:hover {
 }
 
 [class*="toolbar_"] {
-  background: #000;
+  background: var(--p5-black);
   border-radius: 2px;
-  box-shadow: 0 0 0 2px #fff;
+  box-shadow: 0 0 0 2px var(--p5-white);
   transform: skewY(2deg);
 }
 
@@ -924,16 +938,16 @@ section[aria-label="User area"] button[type="button"]:hover {
   color: var(--theme);
 }
 
-/* Tags */
+/* -- Tags ----------------------------------------------------------------------- */
 
 [class*="botTag"] {
   background: var(--mp-pink);
 }
 
 [class*="botTag"] span {
-  color: #fff;
+  color: var(--p5-white);
 }
 
 [class*="botTagVerified"] {
-  color: #fff;
+  color: var(--p5-white);
 }
