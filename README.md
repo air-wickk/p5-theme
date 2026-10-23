@@ -17,7 +17,7 @@ Typically located at `/USERNAME/AppData/Roaming/betterdiscord/themes/`
 
 ## Roadmap
 
-See [ROADMAP.md](ROADMAP.md) for what's coming next in the 2.0.0 line.
+See [ROADMAP.md](https://github.com/air-wickk/p5-theme/blob/2.0.0-beta/ROADMAP.md) to watch the 2.0.0 beta take shape.
 
 ## Credits
 
