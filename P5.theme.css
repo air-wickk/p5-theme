@@ -2,8 +2,7 @@
     * @name Persona 5
     * @version 2.0.0-beta-2
     * @description Persona 5 Color Scheme for Better Discord
-    * @author saysora
-    * @maintained by air-wickk
+    * @author air-wickk
     * @website https://air-wickk.github.io/p5-theme/
     * @source https://github.com/air-wickk/p5-theme
 */
@@ -298,7 +297,7 @@
 
 /* Top Area */
 
-section[aria-label="Channel header"]>div>div:last-child div[role="button"] {
+section[aria-label="Channel header"]>div>div:last-child div[role="button"]:not([class*="iconLayout_"]) {
   background: #000;
   border-radius: 2px;
   border: 2px solid #fff;
@@ -306,11 +305,11 @@ section[aria-label="Channel header"]>div>div:last-child div[role="button"] {
   transform: rotate(4deg);
 }
 
-section[aria-label="Channel header"]>div>div:last-child div[role="button"]:nth-child(even) {
+section[aria-label="Channel header"]>div>div:last-child div[role="button"]:not([class*="iconLayout_"]):nth-child(even) {
   transform: rotate(-4deg);
 }
 
-section[aria-label="Channel header"]>div>div:last-child div[role="button"] svg {
+section[aria-label="Channel header"]>div>div:last-child div[role="button"]:not([class*="iconLayout_"]) svg {
   padding: 1px;
   box-sizing: border-box;
   width: 20px;
@@ -318,36 +317,96 @@ section[aria-label="Channel header"]>div>div:last-child div[role="button"] svg {
   color: #fff;
 }
 
-section[aria-label="Channel header"]>div>div:last-child div[role="button"][aria-expanded="true"] {
+section[aria-label="Channel header"]>div>div:last-child div[role="button"]:not([class*="iconLayout_"])[aria-expanded="true"] {
   background: var(--background-accent);
 }
 
-section[aria-label="Channel header"]>div>div:last-child div[role="button"][aria-expanded="true"]:nth-child(2n + 3) {
+section[aria-label="Channel header"]>div>div:last-child div[role="button"]:not([class*="iconLayout_"])[aria-expanded="true"]:nth-child(2n + 3) {
   background: #fff;
 }
 
-section[aria-label="Channel header"]>div>div:last-child div[role="button"][aria-expanded="true"]:nth-child(2n + 3) svg {
+section[aria-label="Channel header"]>div>div:last-child div[role="button"]:not([class*="iconLayout_"])[aria-expanded="true"]:nth-child(2n + 3) svg {
   color: var(--theme);
 }
 
-/* Dunno what I'm doing with these atm */
-.chat-2ZfjoI .toolbar-3_r2xA .clickable-ZD7xvu:hover {
+/* Search icon card (channel header) */
+
+section[aria-label="Channel header"] div[role="button"][class*="iconLayout_"] {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  box-sizing: border-box;
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
+
+section[aria-label="Channel header"] div[role="button"][class*="iconLayout_"] [class*="iconContainer_"] {
+  position: static;
+}
+
+section[aria-label="Channel header"] div[role="button"][class*="iconLayout_"] svg[class*="clear_"] {
+  display: none;
+}
+
+section[aria-label="Channel header"] div[role="button"][class*="iconLayout_"] svg[class*="icon_"] {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  color: #fff;
+}
+
+/* Header toolbar hover */
+
+[class*="toolbar_"] [class*="clickable_"]:hover {
   background: #fff;
 }
 
-.chat-2ZfjoI .toolbar-3_r2xA .clickable-ZD7xvu:hover .icon-2xnN2Y {
+[class*="toolbar_"] [class*="clickable_"]:hover [class*="icon_"] {
   color: var(--theme);
 }
 
-.theme-dark .lookFilled-1Gx00P.colorPrimary-3b3xI6 {
+/* Buttons: primary + green */
+
+.theme-dark [class*="lookFilled"][class*="colorPrimary"] {
   border-radius: 2px;
   background-color: var(--theme);
   color: #fff;
 }
 
-.theme-dark .lookFilled-1Gx00P.colorPrimary-3b3xI6:hover {
+.theme-dark [class*="lookFilled"][class*="colorPrimary"]:hover {
   background: #fff;
   color: var(--theme);
+}
+
+.theme-dark [class*="lookFilled"][class*="colorGreen"] {
+  background: var(--hp-green);
+}
+
+/* Voice strip buttons (camera / screen / activity / soundboard) */
+
+[class*="actionButtons_e131a9"] [class*="lookFilled"][class*="button"] {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  transform: rotate(-3deg);
+}
+
+[class*="actionButtons_e131a9"] > button[class*="lookFilled"]:nth-of-type(2n) {
+  transform: rotate(3deg);
+}
+
+[class*="actionButtons_e131a9"] [class*="lookFilled"][class*="button"]:hover {
+  background: #fff;
+  color: #000;
 }
 
 section[role="navigation"] {
@@ -461,11 +520,6 @@ section[role="navigation"] {
 
 .datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day {
   background: #000;
-}
-
-.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day--outside-month {
-  /* background: var(--p5-blue); */
-  /* color: #fff; */
 }
 
 .datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day:hover {
