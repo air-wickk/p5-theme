@@ -27,7 +27,7 @@
 
 :root {
   /* 2.0.0 */
-  --p5-main-font: "New P5";
+  --p5-main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --p5-style-font: "New P5";
   --p5-fat-font: "Franklin Gothic";
   --p5-darkest: #000;
@@ -367,6 +367,11 @@ section[aria-label="Channel header"] div[role="button"][class*="iconLayout_"] sv
   color: #fff;
 }
 
+/* Chat header hashtag icon */
+.icon__9293f {
+  color: #fff !important;
+}
+
 /* Header toolbar hover */
 
 [class*="toolbar_"] [class*="clickable_"]:hover {
@@ -392,6 +397,27 @@ section[aria-label="Channel header"] div[role="button"][class*="iconLayout_"] sv
 
 .theme-dark [class*="lookFilled"][class*="colorGreen"] {
   background: var(--hp-green);
+}
+
+/* Red chip legibility: outline the artwork instead of backing tiles */
+.theme-dark [class*="lookFilled"][class*="colorPrimary"] img.emoji {
+  filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 1px 0 #fff)
+    drop-shadow(0 -1px 0 #fff) drop-shadow(0 0 2px #fff);
+}
+
+.theme-dark [class*="lookFilled"][class*="colorPrimary"] .content__57f77 {
+  overflow: visible;
+  padding-bottom: 2px;
+}
+
+/* Slash command names used inside message content */
+.appLauncherOnboardingCommandName_c19a55,
+.theme-dark .appLauncherOnboardingCommandName_c19a55 {
+  color: #fff !important;
+}
+
+.appLauncherOnboardingCommandName_c19a55 .appsIcon_c19a55 {
+  color: #fff !important;
 }
 
 /* Voice strip buttons (camera / screen / activity / soundboard) */
@@ -733,10 +759,6 @@ ol[data-list-id="chat-messages"] div[role="article"] h3 {
   color: var(--theme);
 }
 
-ol[data-list-id="chat-messages"] div[role="article"] .markup__75297 {
-  font-family: "persona";
-}
-
 /* Commented out for now 
 ol[data-list-id="chat-messages"] div[role="article"] span:hover {
   background: #fff;
@@ -802,12 +824,50 @@ ol[data-list-id="chat-messages"] div[role="separator"]:nth-child(2n + 1) span {
 /* .buttons-uaqb-5 */
 
 .channelTextArea__74017>div {
+  position: relative;
   border-radius: 0;
-  transform: skewX(-4deg);
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  overflow: visible;
+  clip-path: none;
 }
 
-.channelTextArea__74017>div .inner__74017 {
-  transform: skewX(4deg);
+/* Skew a decorative backdrop only, so the chatbar content stays crisp */
+.channelTextArea__74017>div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #1e1f22;
+  border-radius: 0;
+  transform: translateZ(0) skewX(-4deg);
+  pointer-events: none;
+}
+
+.channelTextArea__74017 {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  clip-path: none;
+}
+
+.channelTextArea__74017 .floatingBars__74017 {
+  border: none;
+  background: transparent;
+}
+
+/* Nudge the chatbar buttons left without a transform (keeps icons crisp) */
+.channelTextArea__74017 .buttons__74017 {
+  position: relative;
+  left: -16px;
+}
+
+/* Reserve the nudged space so long messages wrap before the buttons */
+.channelTextArea__74017 .textArea__74017,
+.channelTextArea__74017 .slateTextArea_ec4baf {
+  padding-right: 16px !important;
 }
 
 .channelTextArea__74017 {
